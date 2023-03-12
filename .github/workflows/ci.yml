@@ -34,12 +34,17 @@ jobs:
       - name: Build package
         if: github.event_name == 'push'
         run: npm run build
+      - name: Zip assets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          zip -r dist.zip ./dist
+          zip -r coverage.zip ./coverage
       - name: Semantic release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload build
+      - name: Upload build artifact
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v3
         with:
