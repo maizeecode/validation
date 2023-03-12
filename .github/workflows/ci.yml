@@ -39,7 +39,7 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload build
+      - name: Upload build artifact
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v3
         with:
