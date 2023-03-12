@@ -36,8 +36,8 @@ jobs:
         run: npm run build
       - name: Semantic release
         run: |
-         echo github.event_name
-         echo github.ref
+          echo "${{ github.event_name }}"
+          echo "${{ github.ref }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload build
