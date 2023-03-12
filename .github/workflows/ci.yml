@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [dev]
+    branches: [dev, main]
   push:
-    branches: [dev]
+    branches: [dev, main]
 
 jobs:
   ci-setup:
@@ -34,6 +34,10 @@ jobs:
       - name: Build package
         if: github.event_name == 'push'
         run: npm run build
+      - name: Semantic release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload build
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v3
