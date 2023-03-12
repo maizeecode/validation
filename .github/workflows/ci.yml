@@ -11,14 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: '~/.npm'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}
+          restore-key: ${{ runner.os }}-node
       - uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - run: npm ci
-      - name: Run automated tests
-        run: npm test -- --coverage
+      - name: Install dependencies
+        run: npm ci
+      - name: Test package
+        run: npm run test -- --coverage
         env:
           CI: true
-      - name: Build project
-        if: github.event_name == 'push'
+      - name: Build package
+        if: github.event_name === 'push'
         run: npm run build
