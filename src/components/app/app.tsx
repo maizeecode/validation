@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledApp = styled.div`
-  // Your style here
+  background-color: black
 `;
 
 export function App() {
