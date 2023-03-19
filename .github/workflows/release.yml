@@ -10,4 +10,9 @@ jobs:
     steps:
       - name: Send message
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"New release version ${{ github.event.release.tag_name }} out now, Go <${{ github.event.release.html_url }}|check it out>"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl 
+          -X POST -H 'Content-type: 
+          application/json' --data 
+          '{"text":"New release version ${{ github.event.release.tag_name }}
+          out now, Go <${{ github.event.release.html_url }}|
+          check it out>"}' ${{ secrets.SLACK_WEBHOOK_URL }}

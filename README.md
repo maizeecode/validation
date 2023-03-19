@@ -1,3 +1,5 @@
+![](https://github.com/maizeecode/validation/workflows/CI/badge.svg?branch=main&event=push)
+
 # Validation
 
 ## Development server
