@@ -34,7 +34,7 @@ jobs:
       - name: Build package
         if: github.event_name == 'push'
         run: npm run build
-      - name: Zip assets
+      - name: Zip assetss
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           zip -r dist.zip ./dist

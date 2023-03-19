@@ -1,0 +1,13 @@
+name: Slack notification
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  send-slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{secret.SLACK_WEBHOOK_URL}}
