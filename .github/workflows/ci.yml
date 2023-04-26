@@ -58,9 +58,16 @@ jobs:
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_ICON_EMOJI: ':bell:'
-          SLACK_CHANNEL: web-media
-          SLACK_MESSAGE: 'New release Images :package: - ${{job.status}}'
-          SLACK_USERNAME: Github
-          SLACK_COLOR: ${{ job.status }}
+          #          SLACK_ICON_EMOJI: ':bell:'
+          #          SLACK_CHANNEL: web-media
+          #          SLACK_MESSAGE: 'New release Images :package: - ${{job.status}}'
+          #          SLACK_USERNAME: Github
+          #          SLACK_COLOR: ${{ job.status }}
+          #          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_CHANNEL: web-media
+          SLACK_ICON: ':bell:'
+          SLACK_USERNAME: ${{ github.actor }}
+          SLACK_FOOTER: ''
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: "${{ format('{0} job result: {1}', github.job, job.status) }}"
