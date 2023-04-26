@@ -51,11 +51,16 @@ jobs:
           name: build-artifact
           path: dist
   slackNotification:
-    name: Slack Notification
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Slack Notification
+      - name: Slack notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
+          SLACK_ICON_EMOJI: ':bell:'
+          SLACK_CHANNEL: web-media
+          SLACK_MESSAGE: 'New release Images :package: - ${{job.status}}'
+          SLACK_USERNAME: Github
+          SLACK_COLOR: ${{ job.status }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
