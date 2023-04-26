@@ -8,6 +8,7 @@ export function App() {
   return (
     <StyledApp>
       <h1>My new apps</h1>
+      <h1>My new apps</h1>
     </StyledApp>
   );
 }
