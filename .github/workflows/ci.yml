@@ -70,6 +70,6 @@ jobs:
           SLACK_USERNAME: ${{ github.actor }}
           SLACK_FOOTER: ''
           SLACK_COLOR: ${{ job.status }}
-          SLACK_TITLE: 'Flex component release :release:'
+          SLACK_TITLE: 'Flex component release :package:'
           MSG_MINIMAL: 'commit'
-#          SLACK_MESSAGE: 'Flex component release :release: : version: 1.22.0'
+          SLACK_MESSAGE: 'Flex component release :release: : version: 1.22.0'
