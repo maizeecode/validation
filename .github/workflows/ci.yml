@@ -72,4 +72,4 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'Flex component release :package:'
           MSG_MINIMAL: 'commit'
-          SLACK_MESSAGE: 'Flex component release :release: : version: 1.22.0'
+          SLACK_MESSAGE: '[Success] - version: 1.22.0'
