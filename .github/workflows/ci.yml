@@ -79,5 +79,5 @@ jobs:
           SLACK_TITLE: 'Flex component release :package:'
           MSG_MINIMAL: 'commit'
           #          SLACK_MESSAGE: ${{ needs.version.result == 'success' && '[Passed] - Version needs.version.outputs.RELEASE_VERSION' || '[Failed]' }}
-          SLACK_MESSAGE: ${{ needs.version.result == 'success' && '[Failed]' ||  '[Passed] - Version "${{ github.actor }}" '}}
+          SLACK_MESSAGE: ${{ needs.version.result == 'success' && '[Failed]' ||  '[Passed]' }} - Version ${{ github.actor }}
 #          echo "Release for ${{ inputs.PACKAGE_NAME }} version ${{ env.VERSION }} approved!"
