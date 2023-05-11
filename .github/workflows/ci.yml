@@ -50,12 +50,19 @@ jobs:
         with:
           name: build-artifact
           path: dist
+  version:
+    runs-on: ubuntu-latest
+    name:  Release
+    steps:
+      - name: Check branch name
+        run: echo "Release for"
   slackNotification:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Slack notification
         if: always()
+        needs: [ version ]
         uses: rtCamp/action-slack-notify@v2
         env:
           #          SLACK_ICON_EMOJI: ':bell:'
@@ -72,4 +79,4 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACK_TITLE: 'Flex component release :package:'
           MSG_MINIMAL: 'commit'
-          SLACK_MESSAGE: '[Success] - version: 1.22.0'
+          SLACK_MESSAGE: ${{ needs.version.result == 'success' && '[Passed] - Version needs.version.outputs.RELEASE_VERSION' || '[Failed]' }}
